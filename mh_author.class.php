@@ -33,7 +33,7 @@
 			$obj->order_type = $order_type=="desc"?"asc":"desc";
 
 			$list_count = (int)$args->list_count;
-			if(!$list_count) $list_count = 5;
+			if(!$list_count) $list_count = 10;
 			$obj->list_count = $list_count;
 
 			// 설정값
