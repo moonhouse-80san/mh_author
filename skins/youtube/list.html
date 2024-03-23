@@ -1,0 +1,50 @@
+<include target="mf_style.html" />
+<style>
+	@media (max-width:479px) {
+		#site-box{$no} { width:100%; }
+		#site-box{$no} .universal-h2 { font-size:18px }
+		#site-box{$no} .single-blog .single-blog__img {  }
+		#site-box{$no} .single-blog .single-blog__text { display:none; }
+	}
+</style>
+
+<div id="site-box{$no}" class="site-box">
+	<div class="gallery_slider">
+		<div cond="$wi->top_title" class="universal-h2 universal-h2-bckg">{$wi->top_title}</div>
+		<div class="blog-slider{$no} blog-inner">
+			<!--@foreach($box_list as $key => $val)-->
+				{@ $oDocument = $oDocumentModel->getDocument($val->document_srl)}
+				{@
+					$youtube_eid = $wi->youtube_eid;
+					$youtube_code = $oDocument->getExtraEidValue($youtube_eid);
+					$youtube_id = str_replace('https://youtu.be/','',$youtube_code);
+					$youtube_id = str_replace('https://youtu.be/','',$youtube_id);
+				}
+				<div cond="$youtube_id" class="single-blog {$wi->blh_color}" <!--@if($wi->box_click == '' && !Mobile::isMobileCheckByAgent())--><!--@else-->style="cursor: pointer;" onclick="location.href='{getUrl('','document_srl',$oDocument->document_srl)}';"<!--@end-->>
+					<div class="single-blog__img">
+						<iframe id="owl-video" width="{$wi->thumbnail_width}" height="{$wi->thumbnail_height}" src="https://www.youtube.com/embed/{$youtube_id}?rel=0&amp;showinfo=0"frameborder="0" allowfullscreen></iframe>
+					</div>
+
+					<div cond="$wi->title_box =='Y'" class="single-blog__text">
+						<div cond="$wi->title == 'Y'" class="ma_text <!--@if($wi->tooltip == '')-->pr_tooltip" pr_color="{$wi->tooltip_color}" pr_position="{$wi->tooltip_location}" title="{$oDocument->getTitleText()}"<!--@else-->"<!--@end-->><a <!--@if(!$wi->top_box =='Y')-->href="{getUrl('','document_srl',$oDocument->document_srl)}"<!--@end-->>{$oDocument->getTitleText($wi->subject_cut_size)}</a></div>
+						<div cond="$wi->display_regdate == ''" class="regdate">ON {$oDocument->getRegdate('F d, Y')}</div>
+						<div cond="$wi->summary == 'Y'" class="summary">
+							<img cond="!$wi->gr == ''" src="{$tpl_path}/css/back.png" style="position:absolute; bottom:1px; right:1px" />
+							<a <!--@if(!$wi->top_box =='Y')-->href="{getUrl('','document_srl',$oDocument->document_srl)}"<!--@end-->>{$oDocument->getSummary($wi->content_cut_size)}</a>
+						</div>
+
+						<div cond="$wi->button == ''" class="extra">
+							<span class="sbtn_small sbtn-{$wi->tooltip_color}">
+								<!--@if($oDocument->extra_value)-->
+									<a href="{$oDocument->extra_value}" target="_blank"><!--@if($wi->extra_title)--><i class="fab fa-forumbee"></i> {$wi->extra_title}<!--@else-->{$oDocument->extra_value}<!--@end--></a>
+									<!--@else-->
+									<a cond="!$oDocument->extra_value" href="{getUrl('','document_srl',$oDocument->document_srl)}"><i class="fas fa-align-right"></i> Details</a>
+								<!--@end-->
+							</span>
+						</div>
+					</div>
+				</div>
+			<!--@end-->
+		</div>
+	</div>
+</div>

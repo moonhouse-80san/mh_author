@@ -1,0 +1,25 @@
+.universal-h2 { text-align:center; margin-bottom:5px; padding:0; }
+.universal-h2-bckg { background-image:url("../img/double-line.svg"); background-repeat:no-repeat; background-position:center bottom; }
+
+.blog-inner { display:flex; justify-content:space-between; }
+.blog-inner .slick-slide { margin:0 15px; }
+.blog-inner .slick-list { margin:0 -15px; }
+.single-blog { display:flex !important; box-sizing:border-box; font-size:0; margin:5px 0; }
+
+.single-blog .single-blog__img { position:relative; margin:10px auto 0; }
+.single-blog .single-blog__img .ab_thm img { position:relative; z-index:1; }
+
+.single-blog .single-blog__img .ab_text { text-align:center; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; overflow:hidden; margin:0 5px; }
+.single-blog .single-blog__img .ab_sum { text-align:left; margin:0 10px; }
+.single-blog .single-blog__img .ab_ex { text-align:center;  text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; overflow:hidden; margin:0 5px; }
+.single-blog .ab { position:absolute; z-index:2; }
+
+.ab_rating { text-align:center; margin-top:5px; }
+.ab_rating .starRating,.ab_rating .starRating span{overflow:hidden;display:inline-block;height:15px;background:transparent url(../img/iconStarRating.png) no-repeat}
+.ab_rating .starRating{width:79px;vertical-align:middle;text-align:left !important}
+.ab_rating .starRating span{font-size:0;line-height:0;vertical-align:top;text-indent:-100px;*text-indent:0;background-position:0 -14px}
+
+.overlay-effect a,
+.overlay-effect span,
+.overlay-effect b { font-weight:bold; font-style: italic; }
+

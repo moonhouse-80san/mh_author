@@ -1,0 +1,5 @@
+.site-box .zoom-section{ clear:both;}
+.site-box .zoom-small-image{ float:left; }
+.site-box .cloud-zoom-lens { background-color:#fff; cursor:zoom-in;}
+.site-box .cloud-zoom-big { overflow:hidden; box-sizing:border-box; border:1px solid #ccc; margin-left:10px}
+.site-box .cloud-zoom-loading { color:white; background:#222; padding:3px;}

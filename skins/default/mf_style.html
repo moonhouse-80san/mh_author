@@ -1,0 +1,112 @@
+{@ 
+	$wi = $widget_info;
+	$no = rand(1111111,9999999);
+	$imgPath = "widgets/mh_author/with";
+}
+<load target="css/default.css" />
+<load target="../../with/normal.css" />
+<style>
+	#site-box{$no} { width:{$wi->w_size}; margin:10px auto; box-sizing: border-box; }
+	#site-box{$no} .universal-h2 { color:{$wi->title_font_color}; font-size:{$wi->top_title_size}; }
+	#site-box{$no} .single-blog { background-color:{$wi->back_color}; <!--@if($wi->height_user =='h')-->-webkit-flex-wrap:wrap; -ms-flex-wrap:wrap; flex-wrap:wrap; -webkit-box-pack:center; -webkit-justify-content:center; -ms-flex-pack:center; justify-content:center<!--@end--> border:{$wi->border_size}px solid {$wi->border_color}; <!--@if($wi->boxshadow == '')-->box-shadow:0 3px 5px rgba(0,0,0,.2);<!--@end-->}
+	#site-box{$no} .single-blog:hover { display:flex !important; <!--@if($wi->boxshadow == '')-->box-shadow:0 5px 10px rgba(0,0,0,.3);<!--@end-->}
+
+	#site-box{$no} .blue:hover { border:solid 2px rgba(140, 184, 255, 0.5); margin:3px 0 0 -2px; }
+	#site-box{$no} .red:hover { border:solid 2px rgba(241, 186, 182, 0.5); margin:3px 0 0 -2px; }
+	#site-box{$no} .green:hover { border:solid 2px rgba(186, 255, 179, 0.5); margin:3px 0 0 -2px; }
+	#site-box{$no} .white:hover { border:solid 2px rgba(255, 255, 255, 0.5); margin:3px 0 0 -2px; }
+	#site-box{$no} .dark:hover { border:solid 2px rgba(0, 0, 0, 0.2); margin:3px 0 0 -2px; }
+
+	#site-box{$no} .single-blog .single-blog__img img { <!--@if($wi->thumb_gray == 'Y')--> -webkit-filter:grayscale(100%); filter:grayscale(100%)<!--@end--> }
+	#site-box{$no} .single-blog .single-blog__img img:hover { -webkit-filter:grayscale(0%); filter:grayscale(0%)}
+	#site-box{$no} .single-blog .ma_text a { color:{$wi->title_color}; font-size:{$wi->title_size}; }
+	#site-box{$no} .single-blog .summary a { color:{$wi->sum_font_color}; font-size:{$wi->sum_font_size}; <!--@if($wi->content_hl_s == 'Y')-->-webkit-line-clamp:{$wi->content_h_n}; height:{$wi->content_l_h*$wi->content_h_n}em;<!--@end--> line-height:{$wi->content_l_h}em; }
+
+	#site-box{$no} .single-blog .extra { margin:10px 0; <!--@if($wi->button_loca == '1')-->float:left;<!--@elseif($wi->button_loca == '2')-->float:right;<!--@else-->display:flex; justify-content:center; align-items:center; <!--@end--> }
+
+	#site-box{$no} .slider-for{$no} img { margin:5px auto 10px; max-height:{$wi->top_box_height}px; border:3px solid #eee; padding:5px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,.2);}
+	#site-box{$no} .slider-for{$no} video { margin:5px auto 10px; max-height:{$wi->top_box_height}px; border:3px solid #eee; padding:5px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,.2);}
+	#site-box{$no} .slider-for{$no} img:hover { box-shadow:0 0 15px rgba(0,0,0,.3);}
+	#site-box{$no} .slider-for{$no} .top_title { font-size:14px; margin:10px 0 20px; }
+
+	@media (max-width:479px) {
+		#site-box{$no} { width:100%; }
+		#site-box{$no} .universal-h2 { font-size:18px }
+		#site-box{$no} .single-blog .single-blog__img { margin-top:30px; }
+		#site-box{$no} .single-blog .single-blog__img img { width:100px; height:100px; margin-top:30px; }
+		#site-box{$no} .single-blog .single-blog__text { width:100%; padding:10px 10px 10px 20px; }
+		#site-box{$no} .single-blog .single-blog__text .ma_text a { font-size:16px; }
+		#site-box{$no} .single-blog .single-blog__text span { margin-bottom:7px; font-size:14px; }
+		#site-box{$no} .single-blog .single-blog__text .summary { overflow:hidden; text-overflow:ellipsis; -webkit-box-orient:vertical; word-wrap:break-word; display:-webkit-box; -webkit-line-clamp:2; height:40px; line-height:20px; }
+		#site-box{$no} .single-blog .single-blog__text .summary a { font-size:14px; }
+		#site-box{$no} .slider-for{$no} img { max-width:95%; max-height:250px; }
+		#site-box{$no} .slider-for{$no} .top_title { display:none; }
+	}
+</style>
+
+<load target="../../with/slick.min.js" />
+<script>
+	$(document).ready(function() {
+		<!--@if($wi->top_box == 'Y')-->
+		$('.slider-for{$no}').slick({
+			asNavFor: '.blog-slider{$no}',
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			arrows: false,
+			fade: true,
+			adaptiveHeight: <!--@if($wi->auto_height == '')-->true<!--@else-->false<!--@end-->,
+		});
+		<!--@end-->
+
+		$('.blog-slider{$no}').slick({
+			<!--@if($wi->top_box == 'Y')-->asNavFor: '.slider-for{$no}',<!--@end-->
+			slide: 'div',
+			focusOnSelect: true,
+			lazyLoad: 'ondemand',
+			slidesToShow: {$wi->view_no},
+			slidesToScroll : {$wi->scroll_no},
+			speed : {$wi->speed},
+			autoplaySpeed: {$wi->autospeed},
+			rows: {$wi->rows},
+			infinite: <!--@if($wi->infinite == '')-->true<!--@else-->false<!--@end-->,
+			dots: <!--@if($wi->dots == '')-->false<!--@else-->true<!--@end-->,
+			dotsClass: 'slick-dots',
+			arrows: <!--@if($wi->arrow == '')-->true<!--@else-->false<!--@end-->,
+			prevArrow: '<span class="span-arrow slick-prev"></span>',
+			nextArrow: '<span class="span-arrow slick-next"></span>',
+			autoplay: <!--@if($wi->autoplay == '')-->true<!--@else-->false<!--@end-->,
+			vertical : <!--@if($wi->vertical == '')-->false<!--@else-->true<!--@end-->,
+			cssEase: '<!--@if($wi->cssease == '')-->ease<!--@elseif($wi->cssease == '1')-->step-start<!--@else-->cubic-bezier(0.600, -0.280, 0.735, 0.045)<!--@end-->',
+			centerMode: <!--@if($wi->center_m == '')-->false<!--@else-->true<!--@end-->,
+			fade: <!--@if($wi->fade == '')-->false<!--@else-->true<!--@end-->,
+			centerPadding: '{$wi->center_padding}',
+
+			responsive: [ // 반응형 웹 구현 옵션
+					{
+						breakpoint: 1250, //화면 사이즈 1200px
+						settings: {
+							//위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+							slidesToShow:{$wi->m_no}
+						}
+					},
+					{
+						breakpoint: 960, //화면 사이즈 960px
+						settings: {
+							//위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+							slidesToShow:2
+						}
+					},
+					{
+						breakpoint: 479, //화면 사이즈 479px
+						settings: {
+							//위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+							slidesToShow:1,
+							slidesToScroll :1,
+							arrows: false,
+							dots: false
+						}
+					}
+				]
+		});
+	});
+</script>

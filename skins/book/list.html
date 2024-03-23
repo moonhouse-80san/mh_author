@@ -1,0 +1,92 @@
+<include target="mf_style.html" />
+
+<div id="site-box{$no}" class="site-box">
+	<div cond="$wi->top_title" class="universal-h2 universal-h2-bckg">{$wi->top_title}</div>
+
+	<div cond="$wi->top_box == 'Y'" class="slider-for{$no}">
+		<!--@foreach($box_list as $key => $val)-->
+			{@ $oDocument = $oDocumentModel->getDocument($val->document_srl)}
+			{@ $uploaded_images = array()}
+			<!--@if($oDocument->hasUploadedFiles())-->
+				<!--@foreach($oDocument->getUploadedFiles() as $key => $val)-->
+					{@ $filename = strtolower($val->uploaded_filename)}
+					<!--@if((substr($filename,-3)=='gif' || substr($filename,-3)=='jpg' || substr($filename,-3)=='png' || substr($filename,-3)=='mp4'))-->
+					{@ $uploaded_images[] = $val->uploaded_filename}
+					<!--@end-->
+				<!--@end-->
+			<!--@end-->
+			<!--@if(count($uploaded_images))-->
+				{@ $gallery_image = $uploaded_images[0]}
+				<div>
+				<!--@if(substr($filename,-3)=='mp4')-->
+					<center><video cond="substr($filename,-3)=='mp4'" src="{$gallery_image}" controls muted autoplay loop height="{$wi->top_box_height}"></video></center>
+				<!--@else-->
+					<span><a href="{getUrl('','document_srl',$oDocument->document_srl)}"><img src="{$gallery_image}" /></a></span>
+				<!--@end-->
+					<center><a cond="$wi->top_box_title == ''" class="top_title sbtn sbtn-{$wi->tooltip_color}" href="{getUrl('','document_srl',$oDocument->document_srl)}">{$oDocument->getTitleText()} <i class="fas fa-external-link-alt" style="font-size:8px; color:#c18f59"></i></a></center>
+				</div>
+			<!--@end-->
+		<!--@end-->
+	</div>
+
+	<div class="blog-slider{$no} blog-inner">
+		<!--@foreach($box_list as $key => $val)-->
+			{@ $oDocument = $oDocumentModel->getDocument($val->document_srl)}
+			{@ $uploaded_images = array()}
+			<!--@if($oDocument->hasUploadedFiles())-->
+				<!--@foreach($oDocument->getUploadedFiles() as $key => $val)-->
+					{@ $filename = strtolower($val->uploaded_filename)}
+					<!--@if((substr($filename,-3)=='gif' || substr($filename,-3)=='jpg' || substr($filename,-3)=='png' || substr($filename,-3)=='mp4'))-->
+					{@ $uploaded_images[] = $val->uploaded_filename}
+					<!--@end-->
+				<!--@end-->
+			<!--@end-->
+			<div class="single-blog overlay-hover" <!--@if($wi->box_click == '' && !Mobile::isMobileCheckByAgent())--><!--@else-->style="cursor: pointer;" onclick="location.href='{getUrl('','document_srl',$oDocument->document_srl)}';"<!--@end-->>
+				<div class="single-blog__img">
+					<span cond="$oDocument->getExtraEidValueHTML('new') == 'Y'" class="ab_new ab"><img src="{$tpl_path}img/new.png" ></span>
+					<span cond="$oDocument->getExtraEidValueHTML('soldout') == 'Y'" class="ab_soldout ab"><img src="{$tpl_path}img/soldout.png" ></span>
+					<span cond="$oDocument->getExtraEidValueHTML('best') == 'Y'" class="ab_best ab"><img src="{$tpl_path}img/best.png" ></span>
+					<span cond="$oDocument->getExtraEidValueHTML('best') == 'Y' && ($wi->board_select =='w' || $wi->board_select =='c')" class="ab_best1 ab"><img src="{$tpl_path}img/best1.png" ></span>
+					<!--@if((int)($oDocument->getRegdate('YmdHis')>date("YmdHis", time()-$wi->duration_new*60*60)))-->
+					<span class="ab_new ab"><img src="{$tpl_path}img/new.png" ></span>
+					<!--@end-->
+
+					{@ $gallery_image = $uploaded_images[0]}
+					<div class="ab_thm">
+						<!--@if(substr($filename,-3)=='png' || substr($filename,-3)=='gif')-->
+							<img src="{$gallery_image}" style="width:{$wi->thumbnail_width}px; height:{$wi->thumbnail_height}px;">
+						<!--@else-->
+							<!--@if($oDocument->getThumbnail())-->
+								<img src="{$oDocument->getThumbnail($wi->thumbnail_width,$wi->thumbnail_height,$wi->thumbnail_type)}" />
+							<!--@else-->
+								<img src="{$imgPath}/no_image.gif" class="noimg" width="{$wi->thumbnail_width}" height="{$wi->thumbnail_height}" style="width:{$wi->thumbnail_width}px; height:{$wi->thumbnail_height}px; line-height:{$wi->thumbnail_height}px" >
+							<!--@end-->
+						<!--@end-->
+					</div>
+
+					<div class="ab_deco">
+						<img src="{$tpl_path}img/{$wi->board_select}_board_250_70.png">
+						<span cond="$wi->shadow_u == ''" class="ab_shadow ab"></span>
+					</div>
+					<div class="overlay-effect">
+						<div class="ab_text mm">
+							<a href="{getUrl('','document_srl',$oDocument->document_srl)}">{$oDocument->getTitleText($wi->subject_cut_size)} <i cond="$wi->overley == 'Y'" class="fas fa-external-link-alt" style="font-size:12px; margin-left:5px; color:gold"></i></a>
+						</div>
+						<div class="ab_ex">
+							<span cond="$oDocument->getExtraEidValueHTML($wi->ex_view1)" class="m"><b cond="$wi->ex_name1">{$wi->ex_name1} : </b>{$oDocument->getExtraEidValueHTML($wi->ex_view1)}</span></br>
+							<span cond="$oDocument->getExtraEidValueHTML($wi->ex_view2)" class="m"><b cond="$wi->ex_name2">{$wi->ex_name2} : </b>{$oDocument->getExtraEidValueHTML($wi->ex_view2)}</span>
+							<span cond="$oDocument->getExtraEidValueHTML($wi->ex_view3)" class="m"><b cond="$wi->ex_name3">{$wi->ex_name3} : </b><a href="{$oDocument->getExtraEidValueHTML($wi->ex_view3)}" target="_blank">Link</a></span>
+						</div>
+						<div cond="$oDocument->getExtraEidValueHTML('rating') && !$wi->rating_select == ''" class="ab_rating mm">
+							<strong class="starRating <!--@if($wi->tooltip == '')-->pr_tooltip" pr_color="{$wi->tooltip_color}" pr_position="{$wi->tooltip_location}" title="평가 : {$oDocument->getExtraEidValueHTML('rating')}점"<!--@else-->"<!--@end-->><span style="width:{$oDocument->getExtraEidValueHTML('rating')*10}%">{$oDocument->getExtraEidValueHTML('rating')}</span></strong>
+						</div>
+						<div cond="$wi->overley == 'Y' && $wi->summary == 'Y'" class="ab_sum mm">
+							<img cond="!$wi->gr == ''" src="{$tpl_path}/img/back.png" width="120" height="40" style="position:absolute; bottom:55px; right:15px" />
+							<a href="{getUrl('','document_srl',$oDocument->document_srl)}">{$oDocument->getSummary($wi->content_cut_size)}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!--@end-->
+	</div>
+</div>

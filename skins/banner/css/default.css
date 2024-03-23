@@ -1,0 +1,9 @@
+.universal-h2 { text-align:center; margin:0; }
+.universal-h2-bckg { background-image:url("double-line.svg"); background-repeat:no-repeat; background-position:center bottom; }
+
+.banner-inner { display:flex; justify-content:space-between; }
+.banner-inner .slick-slide { margin:0; }
+.banner-inner .slick-list { margin:0; }
+.single-banner { display:flex !important; box-sizing:border-box; font-size:0; border:0 solid #f5f5f5; margin:0; padding:0; }
+.single-banner__img { padding:5px 0; }
+.single-banner .single-banner__img img { padding:0; margin:0; border:0px solid #eee; display:block; }

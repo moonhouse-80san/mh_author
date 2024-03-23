@@ -1,0 +1,70 @@
+{@ 
+	$wi = $widget_info; 
+	$no = rand(1111111,9999999);
+	$imgPath = "widgets/mh_author/with"; 
+}
+<load target="css/default.css" />
+<load target="../../with/normal.css" />
+<style>
+	#site-box{$no} { width:{$wi->w_size}; margin:0px auto; box-sizing: border-box; }
+	#site-box{$no} .universal-h2 { color:{$wi->title_font_color}; font-size:{$wi->top_title_size}; }
+	#site-box{$no} .single-banner { background-color:{$wi->back_color}; -webkit-flex-wrap:wrap; -ms-flex-wrap:wrap; flex-wrap:wrap; -webkit-box-pack:center; -webkit-justify-content:center; -ms-flex-pack:center; justify-content:center; }
+	#site-box{$no} .single-banner__img { height:{$wi->thumbnail_height}px; display:flex; justify-content:center; align-items:center; }
+
+	@media (max-width:479px) {
+		#site-box{$no} { width:100%; }
+	}
+</style>
+
+<load target="../../with/slick.min.js" />
+<script>
+	$(document).ready(function() {
+		$('.banner-slider{$no}').slick({
+			slide: 'div',
+			lazyLoad: 'ondemand',
+			slidesToShow: {$wi->view_no},
+			slidesToScroll : {$wi->scroll_no},
+			speed : {$wi->speed},
+			autoplaySpeed: {$wi->autospeed},
+			rows: {$wi->rows},
+			infinite: <!--@if($wi->infinite == '')-->true<!--@else-->false<!--@end-->,
+			dots: <!--@if($wi->dots == '')-->false<!--@else-->true<!--@end-->,
+			dotsClass: 'slick-dots',
+			arrows: <!--@if($wi->arrow == '')-->true<!--@else-->false<!--@end-->,
+			prevArrow: '<span class="span-arrow slick-prev"></span>',
+			nextArrow: '<span class="span-arrow slick-next"></span>',
+			autoplay: <!--@if($wi->autoplay == '')-->true<!--@else-->false<!--@end-->,
+			vertical : <!--@if($wi->vertical == '')-->false<!--@else-->true<!--@end-->,
+			cssEase: '<!--@if($wi->cssease == '')-->ease<!--@elseif($wi->cssease == '1')-->step-start<!--@else-->cubic-bezier(0.600, -0.280, 0.735, 0.045)<!--@end-->',
+			fade: <!--@if($wi->fade == '')-->false<!--@else-->true<!--@end-->,
+			adaptiveHeight: <!--@if($wi->auto_height == '')-->true<!--@else-->false<!--@end-->,
+
+			responsive: [ // 반응형 웹 구현 옵션
+					{
+						breakpoint: 1250, //화면 사이즈 1200px
+						settings: {
+							//위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+							slidesToShow:{$wi->m_no}
+						}
+					},
+					{
+						breakpoint: 960, //화면 사이즈 960px
+						settings: {
+							//위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+							slidesToShow:2
+						}
+					},
+					{
+						breakpoint: 479, //화면 사이즈 479px
+						settings: {
+							//위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+							slidesToShow:1,
+							slidesToScroll :1,
+							arrows: false,
+							dots: false
+						}
+					}
+				]
+		});
+	});
+</script>

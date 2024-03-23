@@ -1,0 +1,28 @@
+<include target="mf_style.html" />
+
+<div id="site-box{$no}" class="site-box">
+	<div cond="$wi->top_title" class="universal-h2 universal-h2-bckg">{$wi->top_title}</div>
+	<div class="banner-slider{$no} banner-inner">
+		<!--@foreach($box_list as $key => $val)-->
+			{@ $oDocument = $oDocumentModel->getDocument($val->document_srl)}
+			{@ $uploaded_images = array()}
+			<!--@if($oDocument->hasUploadedFiles())-->
+				<!--@foreach($oDocument->getUploadedFiles() as $key => $val)-->
+					{@ $filename = strtolower($val->uploaded_filename)}
+					<!--@if((substr($filename,-3)=='gif' || substr($filename,-3)=='jpg' || substr($filename,-3)=='png'))-->
+					{@ $uploaded_images[] = $val->uploaded_filename}
+					<!--@end-->
+				<!--@end-->
+			<!--@end-->
+			<!--@if(count($uploaded_images))-->
+				{@ $gallery_image = $uploaded_images[0]}
+				<div class="single-banner">
+					<div class="single-banner__img">
+							<a cond="$oDocument->extra_value" href="{$oDocument->extra_value}" target="_blank" <!--@if($wi->tooltip == '')-->class="pr_tooltip" pr_color="{$wi->tooltip_color}" pr_position="{$wi->tooltip_location}" title="{$oDocument->getTitleText()}"<!--@end-->><img src="{$gallery_image}" /></a>
+							<span cond="!$oDocument->extra_value"><img src="{$gallery_image}" /></span>
+					</div>
+				</div>
+			<!--@end-->
+		<!--@end-->
+	</div>
+</div>
