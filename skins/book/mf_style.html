@@ -12,7 +12,7 @@
 	#site-box{$no} { width:{$wi->w_size}; margin:10px auto; box-sizing: border-box; }
 	#site-box{$no} .universal-h2 { color:{$wi->title_font_color}; font-size:{$wi->top_title_size}; }
 
-	#site-box{$no} .single-blog .single-blog__img { max-height:{$wi->thumbnail_height+135}px; }
+	#site-box{$no} .single-blog .single-blog__img { min-height:{$wi->thumbnail_height+100}px; }
 	#site-box{$no} .single-blog .single-blog__img .ab_thm { margin-left:{(250-$wi->thumbnail_width)/2}px; }
 	#site-box{$no} .single-blog .single-blog__img .ab_text a { color:{$wi->title_color}; font-size:14px; }
 	#site-box{$no} .single-blog .single-blog__img .ab_ex span { color:{$wi->title_color}; font-size:14px; max-height:20px; }

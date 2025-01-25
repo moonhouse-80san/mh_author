@@ -8,6 +8,7 @@
     <conditions>
         <condition operation="in" column="module_srl" var="module_srl" filter="number" />
         <condition operation="equal" column="category_srl" var="category_srl" pipe="and" />
+		<condition operation="notequal" column="status" default="TEMP" pipe="and" />
     </conditions>
     <navigation>
         <index var="sort_index" default="list_order" order="order_type" />

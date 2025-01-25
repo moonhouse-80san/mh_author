@@ -72,10 +72,13 @@
 						<div class="ab_text mm">
 							<a href="{getUrl('','document_srl',$oDocument->document_srl)}">{$oDocument->getTitleText($wi->subject_cut_size)} <i cond="$wi->overley == 'Y'" class="fas fa-external-link-alt" style="font-size:12px; margin-left:5px; color:gold"></i></a>
 						</div>
+						<div cond="$oDocument->getExtraEidValueHTML('price')" class="m">
+							<span>Price : {number_format($oDocument->getExtraEidValueHTML('price'))} 원</span>
+						</div>
 						<div class="ab_ex">
-							<span cond="$oDocument->getExtraEidValueHTML($wi->ex_view1)" class="m"><b cond="$wi->ex_name1">{$wi->ex_name1} : </b>{$oDocument->getExtraEidValueHTML($wi->ex_view1)}</span></br>
-							<span cond="$oDocument->getExtraEidValueHTML($wi->ex_view2)" class="m"><b cond="$wi->ex_name2">{$wi->ex_name2} : </b>{$oDocument->getExtraEidValueHTML($wi->ex_view2)}</span>
-							<span cond="$oDocument->getExtraEidValueHTML($wi->ex_view3)" class="m"><b cond="$wi->ex_name3">{$wi->ex_name3} : </b><a href="{$oDocument->getExtraEidValueHTML($wi->ex_view3)}" target="_blank">Link</a></span>
+							<div cond="$oDocument->getExtraEidValueHTML($wi->ex_view1)" class="m"><b cond="$wi->ex_name1">{$wi->ex_name1} : </b>{$oDocument->getExtraEidValueHTML($wi->ex_view1)}</div>
+							<div cond="$oDocument->getExtraEidValueHTML($wi->ex_view2)" class="m"><b cond="$wi->ex_name2">{$wi->ex_name2} : </b>{$oDocument->getExtraEidValueHTML($wi->ex_view2)}</div>
+							<div cond="$oDocument->getExtraEidValueHTML($wi->ex_view3)" class="m"><b cond="$wi->ex_name3">{$wi->ex_name3} : </b><a href="{$oDocument->getExtraEidValueHTML($wi->ex_view3)}" target="_blank">Link</a></div>
 						</div>
 						<div cond="$oDocument->getExtraEidValueHTML('rating') && !$wi->rating_select == ''" class="ab_rating mm">
 							<strong class="starRating <!--@if($wi->tooltip == '')-->pr_tooltip" pr_color="{$wi->tooltip_color}" pr_position="{$wi->tooltip_location}" title="평가 : {$oDocument->getExtraEidValueHTML('rating')}점"<!--@else-->"<!--@end-->><span style="width:{$oDocument->getExtraEidValueHTML('rating')*10}%">{$oDocument->getExtraEidValueHTML('rating')}</span></strong>
