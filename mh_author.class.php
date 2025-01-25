@@ -23,17 +23,20 @@
 			Context::set('oDocumentModel',$oDocumentModel);
 
 			// 정렬 대상
-			if(!in_array($args->order_target, array('list_order','update_order','regdate','rand()','voted_count','readed_count'))) $args->order_target = 'list_order';
-			//if ($args->order_target == 'random') $args->order_target = 'rand()';
+			$valid_order_targets = ['list_order', 'update_order', 'regdate', 'rand()', 'voted_count', 'readed_count', 'comment_count'];
+			$args->order_target = in_array($args->order_target ?? '', $valid_order_targets) ? $args->order_target : 'list_order';
+			
+			$obj = new stdClass();
 			$obj->sort_index = $args->order_target;
 
 			// 정렬 순서
-			$order_type = $args->order_type;
-			if(!in_array($order_type, array('asc','desc'))) $order_type = 'asc';
-			$obj->order_type = $order_type=="desc"?"asc":"desc";
+			$order_type = $args->order_type ?? 'asc';
+			if(!in_array($order_type, ['asc', 'desc'])) $order_type = 'asc';
+			$obj->order_type = $order_type == "desc" ? "asc" : "desc";
 
-			$list_count = (int)$args->list_count;
-			if(!$list_count) $list_count = 10;
+			// 총 목록 수
+			$list_count = (int)($args->list_count ?? 5);
+			if(!$list_count) $list_count = 5;
 			$obj->list_count = $list_count;
 
 			// 설정값
@@ -71,8 +74,9 @@
 			$args->center_padding = isset($args->center_padding) ? $args->center_padding : '50px';
 
 			// 최근 글 표시 시간
-			$widget_info->duration_new = $duration_new * 60*60;
-			if(!$args->duration_new) $args->duration_new = 24;
+			$duration_new = $args->duration_new ?? 24;
+			$widget_info = new stdClass();
+			$widget_info->duration_new = $duration_new * 60 * 60;
 
 			// Box 옵션
 			$args->border_size = isset($args->border_size) ? (int)$args->border_size : 0;
