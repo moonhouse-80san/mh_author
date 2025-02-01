@@ -7,9 +7,9 @@
 <load target="css/default.css" />
 <load target="../../with/normal.css" />
 <style>
-	#site-box{$no} { width:{$wi->w_size}; margin:10px auto; box-sizing: border-box; }
+	#site-box{$no} { width:{$wi->w_size}; margin:10px auto; }
 	#site-box{$no} .universal-h2 { color:{$wi->title_font_color}; font-size:{$wi->top_title_size}; }
-	#site-box{$no} .single-blog { background-color:{$wi->back_color}; <!--@if($wi->height_user =='h')-->-webkit-flex-wrap:wrap; -ms-flex-wrap:wrap; flex-wrap:wrap; -webkit-box-pack:center; -webkit-justify-content:center; -ms-flex-pack:center; justify-content:center<!--@end--> border:{$wi->border_size}px solid {$wi->border_color}; <!--@if($wi->boxshadow == '')-->box-shadow:0 3px 5px rgba(0,0,0,.2);<!--@end-->}
+	#site-box{$no} .single-blog { background-color:{$wi->back_color}; <!--@if($wi->height_user =='h')-->-webkit-flex-wrap:wrap; -ms-flex-wrap:wrap; flex-wrap:wrap; -webkit-box-pack:center; -webkit-justify-content:center; -ms-flex-pack:center; justify-content:center;<!--@end--> border:{$wi->border_size}px solid {$wi->border_color}; <!--@if($wi->boxshadow == '')-->box-shadow:0 3px 5px rgba(0,0,0,.2);<!--@end-->}
 	#site-box{$no} .single-blog:hover { display:flex !important; <!--@if($wi->boxshadow == '')-->box-shadow:0 5px 10px rgba(0,0,0,.3);<!--@end-->}
 
 	#site-box{$no} .blue:hover { border:solid 2px rgba(140, 184, 255, 0.5); margin:3px 0 0 -2px; }
@@ -18,8 +18,8 @@
 	#site-box{$no} .white:hover { border:solid 2px rgba(255, 255, 255, 0.5); margin:3px 0 0 -2px; }
 	#site-box{$no} .dark:hover { border:solid 2px rgba(0, 0, 0, 0.2); margin:3px 0 0 -2px; }
 
-	#site-box{$no} .single-blog .single-blog__img img { <!--@if($wi->thumb_gray == 'Y')--> -webkit-filter:grayscale(100%); filter:grayscale(100%)<!--@end--> }
-	#site-box{$no} .single-blog .single-blog__img img:hover { -webkit-filter:grayscale(0%); filter:grayscale(0%)}
+	#site-box{$no} .single-blog .single-blog__img iframe { <!--@if($wi->thumb_gray == 'Y')--> -webkit-filter:grayscale(100%); filter:grayscale(100%)<!--@end--> }
+	#site-box{$no} .single-blog .single-blog__img iframe:hover { -webkit-filter:grayscale(0%); filter:grayscale(0%)}
 	#site-box{$no} .single-blog .ma_text a { color:{$wi->title_color}; font-size:{$wi->title_size}; }
 	#site-box{$no} .single-blog .summary a { color:{$wi->sum_font_color}; font-size:{$wi->sum_font_size}; <!--@if($wi->content_hl_s == 'Y')-->-webkit-line-clamp:{$wi->content_h_n}; height:{$wi->content_l_h*$wi->content_h_n}em;<!--@end--> line-height:{$wi->content_l_h}em; }
 
