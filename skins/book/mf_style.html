@@ -48,6 +48,11 @@
 	<!--@else-->
 		#site-box{$no} .single-blog .single-blog__img .ab_text { <!--@if($wi->board_select =='w' || $wi->board_select =='c')-->margin-top:5px;<!--@else-->margin-top:-35px;<!--@end--> }
 	<!--@end-->
+
+	@media all and (max-width:479px) {
+		#site-box{$no} .slider-for{$no} img,
+		#site-box{$no} .slider-for{$no} video { width:90%; margin:0 auto; }
+	}
 </style>
 
 <load target="../../with/slick.min.js" />
