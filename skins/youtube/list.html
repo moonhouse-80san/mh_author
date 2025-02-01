@@ -12,6 +12,7 @@
 	<div class="gallery_slider">
 		<div cond="$wi->top_title" class="universal-h2 universal-h2-bckg">{$wi->top_title}</div>
 		<div class="blog-slider{$no} blog-inner">
+			{@$i=0}
 			<!--@foreach($box_list as $key => $val)-->
 				{@ $oDocument = $oDocumentModel->getDocument($val->document_srl)}
 				{@
@@ -44,6 +45,7 @@
 						</div>
 					</div>
 				</div>
+			{@$i++}
 			<!--@end-->
 		</div>
 	</div>

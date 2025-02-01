@@ -4,6 +4,7 @@
 	<div cond="$wi->top_title" class="universal-h2 universal-h2-bckg">{$wi->top_title}</div>
 
 	<div cond="$wi->top_box == 'Y'" class="slider-for{$no}">
+		{@$i=0}
 		<!--@foreach($box_list as $key => $val)-->
 			{@ $oDocument = $oDocumentModel->getDocument($val->document_srl)}
 			{@ $uploaded_images = array()}
@@ -26,10 +27,12 @@
 					<center><a cond="$wi->top_box_title ==''" class="top_title sbtn sbtn-{$wi->tooltip_color}" href="{getUrl('','document_srl',$oDocument->document_srl)}">{$oDocument->getTitleText()} <i class="fas fa-external-link-alt" style="font-size:8px; color:#c18f59"></i></a></center>
 				</div>
 			<!--@end-->
+		{@$i++}
 		<!--@end-->
 	</div>
 
 	<div class="blog-slider{$no} blog-inner">
+		{@$i=0}
 		<!--@foreach($box_list as $key => $val)-->
 			{@ $oDocument = $oDocumentModel->getDocument($val->document_srl)}
 			{@ $uploaded_images = array()}
@@ -92,6 +95,7 @@
 					</div>
 				</div>
 			</div>
+		{@$i++}
 		<!--@end-->
 	</div>
 </div>

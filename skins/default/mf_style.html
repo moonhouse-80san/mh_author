@@ -1,6 +1,7 @@
 {@ 
 	$wi = $widget_info;
-	$no = rand(1111111,9999999);
+	$mh_counter = isset($mh_counter) ? $mh_counter + 1 : 1;
+	$no = $mh_counter;
 	$imgPath = "widgets/mh_author/with";
 }
 <load target="css/default.css" />

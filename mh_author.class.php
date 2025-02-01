@@ -17,8 +17,8 @@
 			function proc($args) {
 
 			//기본 객체 설정
-			$oModuleModel = &getModel('module');
-			$oDocumentModel = &getModel('document');
+			$oModuleModel = getModel('module');
+			$oDocumentModel = getModel('document');
 			Context::set('oModuleModel',$oModuleModel);
 			Context::set('oDocumentModel',$oDocumentModel);
 
@@ -73,14 +73,14 @@
 			$args->top_box_height = isset($args->top_box_height) ? (int)$args->top_box_height : 300;
 			$args->center_padding = isset($args->center_padding) ? $args->center_padding : '50px';
 
-			// 최근 글 표시 시간
-			$duration_new = $args->duration_new ?? 24;
-			$widget_info = new stdClass();
-			$widget_info->duration_new = $duration_new * 60 * 60;
-
 			// Box 옵션
 			$args->border_size = isset($args->border_size) ? (int)$args->border_size : 0;
 			$args->border_color = isset($args->border_color) ? $args->border_color : '#f5f5f5';
+
+			// 최근 글 표시 시간
+			if(!$args->duration_new) $args->duration_new = 24;
+			$widget_info = new stdClass();
+			$widget_info->duration_new = $duration_new * 60 * 60;
 
 			// 대상 모듈
 			$mid_list = explode(",",$args->mid_list);
@@ -186,5 +186,3 @@
 			return $output;
 		}
 	}
-
-?>

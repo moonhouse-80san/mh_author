@@ -3,6 +3,7 @@
 <div id="site-box{$no}" class="site-box">
 	<div cond="$wi->top_title" class="universal-h2 universal-h2-bckg">{$wi->top_title}</div>
 	<div class="banner-slider{$no} banner-inner">
+		{@$i=0}
 		<!--@foreach($box_list as $key => $val)-->
 			{@ $oDocument = $oDocumentModel->getDocument($val->document_srl)}
 			{@ $uploaded_images = array()}
@@ -23,6 +24,7 @@
 					</div>
 				</div>
 			<!--@end-->
+		{@$i++}
 		<!--@end-->
 	</div>
 </div>
