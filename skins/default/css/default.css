@@ -4,8 +4,8 @@
 .blog-inner { display:flex; justify-content:space-between; }
 .blog-inner .slick-slide { margin:0 15px; }
 .blog-inner .slick-list { margin:0 -15px; }
-.single-blog { display:flex !important; box-sizing:border-box; font-size:0; margin:5px 0;}
-.single-blog .single-blog__img { margin-top:10px }
+.single-blog { display:flex !important; box-sizing:border-box; font-size:0; margin:5px 0; }
+.single-blog .single-blog__img { margin:10px }
 .single-blog .single-blog__img img { padding:0px; border:0px solid #eee; }
 
 .single-blog .single-blog__text { padding:0 10px; word-break:break-all; overflow:hidden; }

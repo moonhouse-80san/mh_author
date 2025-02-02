@@ -7,7 +7,7 @@
 <load target="css/default.css" />
 <load target="../../with/normal.css" />
 <style>
-	#site-box{$no} { width:{$wi->w_size}; margin:10px auto; }
+	#site-box{$no} { width:{$wi->w_size}; margin:10px auto; box-sizing: border-box; }
 	#site-box{$no} .universal-h2 { color:{$wi->title_font_color}; font-size:{$wi->top_title_size}; }
 	#site-box{$no} .single-blog { background-color:{$wi->back_color}; <!--@if($wi->height_user =='h')-->-webkit-flex-wrap:wrap; -ms-flex-wrap:wrap; flex-wrap:wrap; -webkit-box-pack:center; -webkit-justify-content:center; -ms-flex-pack:center; justify-content:center;<!--@end--> border:{$wi->border_size}px solid {$wi->border_color}; <!--@if($wi->boxshadow == '')-->box-shadow:0 3px 5px rgba(0,0,0,.2);<!--@end-->}
 	#site-box{$no} .single-blog:hover { display:flex !important; <!--@if($wi->boxshadow == '')-->box-shadow:0 5px 10px rgba(0,0,0,.3);<!--@end-->}
