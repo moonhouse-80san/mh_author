@@ -21,7 +21,7 @@
 	#site-box{$no} .single-blog .single-blog__img img { <!--@if($wi->thumb_gray == 'Y')--> -webkit-filter:grayscale(100%); filter:grayscale(100%)<!--@end--> }
 	#site-box{$no} .single-blog .single-blog__img img:hover { -webkit-filter:grayscale(0%); filter:grayscale(0%)}
 	#site-box{$no} .single-blog .ma_text a { color:{$wi->title_color}; font-size:{$wi->title_size}; }
-	#site-box{$no} .single-blog .summary a { color:{$wi->sum_font_color}; font-size:{$wi->sum_font_size}; <!--@if($wi->content_hl_s == 'Y')-->-webkit-line-clamp:{$wi->content_h_n}; height:{$wi->content_l_h*$wi->content_h_n}em;<!--@end--> line-height:{$wi->content_l_h}em; }
+	#site-box{$no} .single-blog .summary a { color:{$wi->sum_font_color}; font-size:{$wi->sum_font_size}; <!--@if($wi->content_hl_s == 'Y')-->-webkit-line-clamp:{$wi->content_h_n};<!--@end--> line-height:{$wi->content_l_h}em; }
 
 	#site-box{$no} .single-blog .extra { margin:10px 0; <!--@if($wi->button_loca == '1')-->float:left;<!--@elseif($wi->button_loca == '2')-->float:right;<!--@else-->display:flex; justify-content:center; align-items:center; <!--@end--> }
 
@@ -29,6 +29,14 @@
 	#site-box{$no} .slider-for{$no} video { margin:5px auto 10px; max-height:{$wi->top_box_height}px; border:3px solid #eee; padding:5px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,.2);}
 	#site-box{$no} .slider-for{$no} img:hover { box-shadow:0 0 15px rgba(0,0,0,.3);}
 	#site-box{$no} .slider-for{$no} .top_title { font-size:14px; margin:10px 0 20px; }
+
+	<!--@if($wi->height_user =='h')-->
+		#site-box{$no} .single-blog .single-blog__text .ma_text,
+		#site-box{$no} .single-blog .single-blog__text .regdate { text-align:center; }
+	<!--@else-->
+		#site-box{$no} .single-blog .single-blog__text .ma_text,
+		#site-box{$no} .single-blog .single-blog__text .regdate { text-align:left; }
+	<!--@end-->
 
 	@media (max-width:479px) {
 		#site-box{$no} { width:100%; }

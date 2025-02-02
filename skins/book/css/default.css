@@ -9,7 +9,7 @@
 .single-blog .single-blog__img { position:relative; margin:10px auto 0; }
 .single-blog .single-blog__img .ab_thm img { position:relative; z-index:1; }
 
-.single-blog .single-blog__img .ab_text { text-align:center; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; overflow:hidden; margin:0 5px; }
+.single-blog .single-blog__img .ab_text { text-align:center; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; overflow:hidden; margin:0 auto; }
 .single-blog .single-blog__img .ab_sum { text-align:left; margin:0 10px; }
 .single-blog .single-blog__img .ab_ex { text-align:center;  text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; overflow:hidden; margin:0 5px; }
 .single-blog .ab { position:absolute; z-index:2; }

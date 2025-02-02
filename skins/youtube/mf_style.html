@@ -29,6 +29,15 @@
 	#site-box{$no} .slider-for{$no} video { margin:5px auto 10px; max-height:{$wi->top_box_height}px; border:3px solid #eee; padding:5px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,.2);}
 	#site-box{$no} .slider-for{$no} img:hover { box-shadow:0 0 15px rgba(0,0,0,.3);}
 	#site-box{$no} .slider-for{$no} .top_title { font-size:14px; margin:10px 0 20px; }
+
+	<!--@if($wi->height_user =='h')-->
+		#site-box{$no} .single-blog .ma_text,
+		#site-box{$no} .single-blog .regdate { text-align:center; }
+	<!--@else-->
+		#site-box{$no} .single-blog .ma_text,
+		#site-box{$no} .single-blog .regdate { text-align:left; }
+	<!--@end-->
+
 </style>
 
 <load target="../../with/slick.min.js" />
