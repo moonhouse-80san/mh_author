@@ -23,7 +23,7 @@
 	#site-box{$no} .single-blog .ma_text a { color:{$wi->title_color}; font-size:{$wi->title_size}; }
 	#site-box{$no} .single-blog .summary a { color:{$wi->sum_font_color}; font-size:{$wi->sum_font_size}; <!--@if($wi->content_hl_s == 'Y')-->-webkit-line-clamp:{$wi->content_h_n}; height:{$wi->content_l_h*$wi->content_h_n}em;<!--@end--> line-height:{$wi->content_l_h}em; }
 
-	#site-box{$no} .single-blog .extra { margin:10px 0 0 0; <!--@if($wi->button_loca == '1')-->float:left;<!--@elseif($wi->button_loca == '2')-->float:right;<!--@else-->display:flex; justify-content:center; align-items:center; <!--@end--> }
+	#site-box{$no} .single-blog .extra { margin:10px 0; <!--@if($wi->button_loca == '1')-->float:left;<!--@elseif($wi->button_loca == '2')-->float:right;<!--@else-->display:flex; justify-content:center; align-items:center; <!--@end--> }
 
 	#site-box{$no} .slider-for{$no} img { margin:5px auto 10px; max-height:{$wi->top_box_height}px; border:3px solid #eee; padding:5px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,.2);}
 	#site-box{$no} .slider-for{$no} video { margin:5px auto 10px; max-height:{$wi->top_box_height}px; border:3px solid #eee; padding:5px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,.2);}

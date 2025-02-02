@@ -51,7 +51,7 @@
 					<span cond="$oDocument->getExtraEidValueHTML('best') == 'Y'" class="ab_best ab"><img src="{$tpl_path}img/best.png" ></span>
 					<span cond="$oDocument->getExtraEidValueHTML('best') == 'Y' && ($wi->board_select =='w' || $wi->board_select =='c')" class="ab_best1 ab"><img src="{$tpl_path}img/best1.png" ></span>
 					<!--@if((int)($oDocument->getRegdate('YmdHis')>date("YmdHis", time()-$wi->duration_new*60*60)))-->
-					<span class="ab_new ab"><img src="{$tpl_path}img/new.png" ></span>
+						<span class="ab_new ab"><img src="{$tpl_path}img/new.png" ></span>
 					<!--@end-->
 
 					{@ $gallery_image = $uploaded_images[0]}
