@@ -24,57 +24,57 @@
 
 			// 정렬 대상
 			$valid_order_targets = ['list_order', 'update_order', 'regdate', 'rand()', 'voted_count', 'readed_count', 'comment_count'];
-			$args->order_target = in_array($args->order_target ?? '', $valid_order_targets) ? $args->order_target : 'list_order';
-			
+			$order_target = $args->order_target ?? '';
+			$args->order_target = in_array($order_target, $valid_order_targets) ? $order_target : 'list_order';
+
 			$obj = new stdClass();
 			$obj->sort_index = $args->order_target;
 
 			// 정렬 순서
 			$order_type = $args->order_type ?? 'asc';
-			if(!in_array($order_type, ['asc', 'desc'])) $order_type = 'asc';
-			$obj->order_type = $order_type == "desc" ? "asc" : "desc";
+			$obj->order_type = (strtolower($order_type) === "desc") ? "asc" : "desc";
 
-			// 총 목록 수
+			// 총 목록수
 			$list_count = (int)($args->list_count ?? 5);
 			if(!$list_count) $list_count = 5;
-			$obj->list_count = $list_count;
+			$obj->list_count = max((int)($args->list_count ?? 5), 5);
 
 			// 설정값들의 기본값 처리
-			$defaults = [
-				'subject_cut_size' => 0,
-				'content_cut_size' => 300,
-				'thumbnail_type' => 'fill',
-				'thumbnail_width' => 250,
-				'thumbnail_height' => 250,
-				'top_title_size' => '24px',
-				'title_size' => '20px',
-				'sum_font_size' => '14px',
-				'title_color' => '#444',
-				'sum_font_color' => '#444',
-				'title_font_color' => '#444',
-				'content_l_h' => '1.5',
-				'content_h_n' => 6,
-				'tooltip_color' => null,
-				'tooltip_location' => null,
-				'back_color' => 'transparent',
-				'w_size' => '95%',
-				'mh_n' => 'one',
-				// YouTube 설정값
-				'youtube_eid' => 'transfer',
-				'option_margin' => 0,
-				// Slide 설정값
-				'view_no' => 2,
-				'scroll_no' => 1,
-				'autospeed' => 5000,
-				'speed' => 3000,
-				'm_no' => 2,
-				'rows' => 1,
-				'top_box_height' => 300,
-				'center_padding' => '50px',
-				// Box 옵션
-				'border_size' => 0,
-				'border_color' => '#f5f5f5'
-			];
+			$args->subject_cut_size = isset($args->subject_cut_size) ? (int)$args->subject_cut_size : 0;
+			$args->content_cut_size = isset($args->content_cut_size) ? (int)$args->content_cut_size : 300;
+			$args->thumbnail_type = isset($args->thumbnail_type) ? $args->thumbnail_type : 'fill';
+			$args->thumbnail_width = isset($args->thumbnail_width) ? (int)$args->thumbnail_width : 250;
+			$args->thumbnail_height = isset($args->thumbnail_height) ? (int)$args->thumbnail_height : 250;
+			$args->top_title_size = isset($args->top_title_size) ? $args->top_title_size : '24px';
+			$args->title_size = isset($args->title_size) ? $args->title_size : '20px';
+			$args->sum_font_size = isset($args->sum_font_size) ? $args->sum_font_size : '14px';
+			$args->title_color = isset($args->title_color) ? $args->title_color : '#444';
+			$args->sum_font_color = isset($args->sum_font_color) ? $args->sum_font_color : '#444';
+			$args->title_font_color = isset($args->title_font_color) ? $args->title_font_color : '#444';
+			$args->content_l_h = isset($args->content_l_h) ? $args->content_l_h : '1.5';
+			$args->content_h_n = isset($args->content_h_n) ? (int)$args->content_h_n : 6;
+			$args->tooltip_color = $args->tooltip_color;
+			$args->tooltip_location = $args->tooltip_location;
+			$args->back_color = isset($args->back_color) ? $args->back_color : 'transparent';
+			$args->w_size = isset($args->w_size) ? $args->w_size : '95%';
+
+			// YouTube 설정값
+			$args->youtube_eid = isset($args->youtube_eid) ? $args->youtube_eid : 'transfer';
+			$args->option_margin = isset($args->option_margin) ? (int)$args->option_margin : 0;
+			
+			// Slide 설정값
+			$args->view_no = isset($args->view_no) ? (int)$args->view_no : 2;
+			$args->scroll_no = isset($args->scroll_no) ? (int)$args->scroll_no : 1;
+			$args->autospeed = isset($args->autospeed) ? (int)$args->autospeed : 5000;
+			$args->speed = isset($args->speed) ? (int)$args->speed : 3000;
+			$args->m_no = isset($args->m_no) ? (int)$args->m_no : 2;
+			$args->rows = isset($args->rows) ? (int)$args->rows : 1;
+			$args->top_box_height = isset($args->top_box_height) ? (int)$args->top_box_height : 300;
+			$args->center_padding = isset($args->center_padding) ? $args->center_padding : '50px';
+			
+			// Box 옵션
+			$args->border_size = isset($args->border_size) ? (int)$args->border_size : 0;
+			$args->border_color = isset($args->border_color) ? $args->border_color : '#f5f5f5';
 
 			// 최근 글 표시 시간
 			if(!$args->duration_new) $args->duration_new = 24;
